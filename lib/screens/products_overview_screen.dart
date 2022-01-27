@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app/screens/cart_screen.dart';
 
+import './cart_screen.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/badge.dart';
 import '../widgets/products_grid.dart';
@@ -10,8 +10,8 @@ import '../providers/cart.dart';
 // import '../providers/product.dart';
 
 enum FilterValues {
-  Favourites,
-  All
+  favourites,
+  all
 }
 
 class ProductOverviewScreen extends StatefulWidget {
@@ -24,14 +24,14 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       appBar: AppBar(
-        title: Text("MyShop"),
+        title: const Text("MyShop"),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterValues selectedValue) {
               setState(() {
-                if(selectedValue == FilterValues.Favourites) {
+                if(selectedValue == FilterValues.favourites) {
                   _showFav = true;
                 }
                 else {
@@ -39,15 +39,15 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                 }
               });
             },
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
               itemBuilder: (_) => [
-                PopupMenuItem(
+                const PopupMenuItem(
                   child: Text("Only Favourites"),
-                  value: FilterValues.Favourites,
+                  value: FilterValues.favourites,
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                 child: Text("Show All"),
-                value: FilterValues.All,
+                value: FilterValues.all,
                 ),
               ],
           ),
